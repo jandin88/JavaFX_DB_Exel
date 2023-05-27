@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML.MainViewController">
+    <content>
+        <VBox prefHeight="439.0" prefWidth="614.0">
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Registration">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Seller" />
+                                <MenuItem mnemonicParsing="false" text="Departament" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="Novo">
+               <VBox.margin>
+                  <Insets left="20.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btExport" mnemonicParsing="false" onAction="#onBtExportAction" text="Exportar">
+               <VBox.margin>
+                  <Insets left="80.0" top="-25.0" />
+               </VBox.margin>
+            </Button>
+            <TableView fx:id="clientTableView" prefHeight="288.0" prefWidth="614.0">
+               <columns>
+                  <TableColumn fx:id="tableColumnID" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="tableColumnName" minWidth="20.0" prefWidth="100.0" text="Nome" />
+                  <TableColumn fx:id="tableColumnEmail" prefWidth="150.0" text="E-mail" />
+                  <TableColumn fx:id="tableColumnTelefone" prefWidth="100.0" text="Telefone" />
+                  <TableColumn fx:id="tableColumnIdade" prefWidth="75.0" text="Idade" />
+               </columns>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TableView>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

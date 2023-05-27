@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ApchePoi">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/Lib/ApchePoi" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Lib/ApchePoi" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/Lib/ApchePoi" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/Lib/ApchePoi" recursive="false" type="SOURCES" />
+  </library>
+</component>
