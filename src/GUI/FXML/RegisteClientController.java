@@ -50,13 +50,15 @@ public class RegisteClientController implements Initializable {
         DB.closeConnection();
         JOptionPane.showMessageDialog(null, "Cadastrado");
 
-
     }
 
 
 
     @FXML
-    public void onBtReturnAction(){loadViewRegister("/GUI/FXML/MainView.fxml");}
+    public void onBtReturnAction(){
+
+        loadViewRegister("/GUI/FXML/MainView.fxml");
+    }
 
 
     @Override

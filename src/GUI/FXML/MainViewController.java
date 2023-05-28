@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +28,7 @@ public class MainViewController implements Initializable {
 
     private ClientService service;
     private ObservableList<Client>obsList;
+
     @FXML
     private Button btExport;
     @FXML
@@ -51,7 +51,6 @@ public class MainViewController implements Initializable {
     }
     @FXML
     public void onBtNewAction(){
-
         loadViewRegister("/GUI/FXML/registerClient.fxml");
     }
 
@@ -62,8 +61,8 @@ public class MainViewController implements Initializable {
         String userHome = System.getProperty("user.home");
         String fileNome = userHome + File.separator + "Documents";
 
-            Export export = new Export();
-            export.generateExcel(clients, fileNome);
+        Export export = new Export();
+        export.generateExcel(clients, fileNome);
 
     }
     @Override
@@ -91,19 +90,25 @@ public class MainViewController implements Initializable {
         obsList= FXCollections.observableList(list);
         clientTableView.setItems(obsList);
     }
-    static synchronized void loadViewRegister(String absoluteName){
+    static synchronized void loadViewRegister(String AbsoluteName){
         try {
-            FXMLLoader loader = new FXMLLoader(MainViewController.class.getResource(absoluteName));
-            VBox newVbox = loader.load();
+            FXMLLoader loader=new FXMLLoader(MainViewController.class.getResource(AbsoluteName));
+            ScrollPane newVbox = loader.load();
 
             Scene mainScene= Main.getMainScene();
-            VBox mainVbox=(VBox)((ScrollPane)mainScene.getRoot()).getContent();
-            ScrollPane scrollPane=(ScrollPane)mainScene.getRoot();
+            VBox mainVbox=(VBox) ((ScrollPane)mainScene.getRoot()).getContent();
+
+            newVbox.setFitToHeight(true);
+            newVbox.setFitToWidth(true);
+
 
             mainVbox.getChildren().clear();
-            newVbox.setAlignment(Pos.CENTER);
-            mainVbox.getChildren().addAll(newVbox.getChildren());
-            scrollPane.setContent(mainVbox);
+            if (AbsoluteName=="/GUI/FXML/MainView.fxml"){
+                MainViewController controller=loader.getController();
+                controller.setClienteService(new ClientService());
+                controller.updateTableView();
+            }
+            mainVbox.getChildren().addAll(newVbox);
 
 
         }catch (Exception e){
