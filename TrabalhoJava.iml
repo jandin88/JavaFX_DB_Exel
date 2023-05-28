@@ -10,5 +10,6 @@
     <orderEntry type="library" name="JavaFX" level="project" />
     <orderEntry type="library" name="MySQL" level="project" />
     <orderEntry type="library" name="ApchePoi" level="project" />
+    <orderEntry type="library" name="log4j-api-2.18.0" level="project" />
   </component>
 </module>

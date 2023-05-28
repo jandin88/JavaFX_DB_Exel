@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -54,9 +55,16 @@ public class MainViewController implements Initializable {
     public void onBtExportAction() throws IOException {
         ClientDao dao= DaoFactory.createClientDao();
         List<Client> clients = dao.findAll();
-
-        Export export = new Export();
-        export.generatorExel(clients);
+        String userHome = System.getProperty("user.home");
+        String fileNome = userHome + File.separator + "Documents";
+        File diretorio =new File(fileNome);
+        if(!diretorio.exists()){
+            diretorio.mkdir();
+            System.out.println("erro");
+        }else {
+            Export export = new Export();
+            export.generateExcel(clients, fileNome);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb){initializeNode();}
@@ -85,24 +93,4 @@ public class MainViewController implements Initializable {
     }
 
 
-/*
-    private synchronized void loaView(String absoluteName){
-        try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource(absoluteName));
-            VBox newVbox = loader.load();
-
-            Scene mainScene= Main.getMainScene();
-            VBox mainVbox=(VBox) ((ScrollPane)mainScene.getRoot()).getContent();
-
-            Node mainMenu= mainVbox.getChildren().get(0);
-            mainVbox.getChildren().clear();
-            mainVbox.getChildren().add(mainMenu);
-            mainVbox.getChildren().addAll(newVbox.getChildren());
-
-
-        }catch (IOException e){
-            alerts.showAlert("IO Excpetion",e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-*/
 }

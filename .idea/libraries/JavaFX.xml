@@ -4,7 +4,9 @@
       <root url="file://$PROJECT_DIR$/Lib/JavaFX" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Lib/JavaFX/javafx-swt.jar!/" />
+    </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/Lib/JavaFX" recursive="false" />
   </library>
 </component>
