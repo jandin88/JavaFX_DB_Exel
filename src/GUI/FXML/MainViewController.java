@@ -1,17 +1,20 @@
 package GUI.FXML;
 
+import GUI.Util.alerts;
 import Model.Dao.ClientDao;
 import Model.Dao.DaoFactory;
 import Model.Entites.Client;
 import Model.Export.Export;
 import Model.Service.ClientService;
+import Project.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
@@ -48,7 +51,8 @@ public class MainViewController implements Initializable {
     }
     @FXML
     public void onBtNewAction(){
-        System.out.println("onBtNewAction");
+
+        loadViewRegister("/GUI/FXML/registerClient.fxml");
     }
 
     @FXML
@@ -57,14 +61,10 @@ public class MainViewController implements Initializable {
         List<Client> clients = dao.findAll();
         String userHome = System.getProperty("user.home");
         String fileNome = userHome + File.separator + "Documents";
-        File diretorio =new File(fileNome);
-        if(!diretorio.exists()){
-            diretorio.mkdir();
-            System.out.println("erro");
-        }else {
+
             Export export = new Export();
             export.generateExcel(clients, fileNome);
-        }
+
     }
     @Override
     public void initialize(URL url, ResourceBundle rb){initializeNode();}
@@ -90,6 +90,26 @@ public class MainViewController implements Initializable {
         List<Client> list=service.findAll();
         obsList= FXCollections.observableList(list);
         clientTableView.setItems(obsList);
+    }
+    static synchronized void loadViewRegister(String absoluteName){
+        try {
+            FXMLLoader loader = new FXMLLoader(MainViewController.class.getResource(absoluteName));
+            VBox newVbox = loader.load();
+
+            Scene mainScene= Main.getMainScene();
+            VBox mainVbox=(VBox)((ScrollPane)mainScene.getRoot()).getContent();
+            ScrollPane scrollPane=(ScrollPane)mainScene.getRoot();
+
+            mainVbox.getChildren().clear();
+            newVbox.setAlignment(Pos.CENTER);
+            mainVbox.getChildren().addAll(newVbox.getChildren());
+            scrollPane.setContent(mainVbox);
+
+
+        }catch (Exception e){
+            alerts.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);
+        }
+
     }
 
 

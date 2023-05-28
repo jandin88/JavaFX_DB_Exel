@@ -63,7 +63,7 @@ public class Export {
 
         // Cria um seletor de pasta
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); // Apenas pastas são permitidas
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
         // Exibe a janela de diálogo para o usuário selecionar uma pasta
         int result = fileChooser.showOpenDialog(null);
@@ -73,7 +73,6 @@ public class Export {
             selectedFolderPath = fileChooser.getSelectedFile().getPath();
 
         }
-
         return selectedFolderPath;
 
     }
