@@ -7,6 +7,7 @@ import Model.Entites.Client;
 import Model.Export.Export;
 import Model.Service.ClientService;
 import Project.Main;
+import db.DB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -90,7 +91,7 @@ public class MainViewController implements Initializable {
         obsList= FXCollections.observableList(list);
         clientTableView.setItems(obsList);
     }
-    static synchronized void loadViewRegister(String AbsoluteName){
+    synchronized void loadViewRegister(String AbsoluteName){
         try {
             FXMLLoader loader=new FXMLLoader(MainViewController.class.getResource(AbsoluteName));
             ScrollPane newVbox = loader.load();
@@ -114,7 +115,6 @@ public class MainViewController implements Initializable {
         }catch (Exception e){
             alerts.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);
         }
-
     }
 
 

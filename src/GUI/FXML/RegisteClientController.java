@@ -1,10 +1,12 @@
 package GUI.FXML;
 
+import GUI.Util.alerts;
 import Model.Dao.Impl.ClienteDaoJDBC;
 import Model.Entites.Client;
 import db.DB;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -12,8 +14,6 @@ import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
-
-import static GUI.FXML.MainViewController.loadViewRegister;
 
 
 public class RegisteClientController implements Initializable {
@@ -33,22 +33,24 @@ public class RegisteClientController implements Initializable {
 
     @FXML
     public void onBtRegisterAction(){
-        Connection connection=DB.getConnection();
-        String name= txtName.getText();
-        String email=txtEmail.getText();
-        String telefone=txtTelefone.getText();
-        Integer idade=Integer.parseInt(txtIdade.getText());
+        try {
+            Connection connection = DB.getConnection();
+            String name = txtName.getText();
+            String email = txtEmail.getText();
+            String telefone = txtTelefone.getText();
+            Integer idade = Integer.parseInt(txtIdade.getText());
 
-        Client client=new Client();
-        client.setNome(name);
-        client.setEmail(email);
-        client.setTelefone(telefone);
-        client.setIdade(idade);
+            Client client = new Client();
+            client.setNome(name);
+            client.setEmail(email);
+            client.setTelefone(telefone);
+            client.setIdade(idade);
 
-        ClienteDaoJDBC clienteDaoJDBC=new ClienteDaoJDBC(connection);
-        clienteDaoJDBC.insert(client);
-        DB.closeConnection();
-        JOptionPane.showMessageDialog(null, "Cadastrado");
+            ClienteDaoJDBC clienteDaoJDBC = new ClienteDaoJDBC(connection);
+            clienteDaoJDBC.insert(client);
+            JOptionPane.showMessageDialog(null, "Cadastrado");
+        }catch (Exception e){
+            alerts.showAlert("ERROR","Informações incompletas", Alert.AlertType.ERROR);}
 
     }
 
@@ -56,8 +58,8 @@ public class RegisteClientController implements Initializable {
 
     @FXML
     public void onBtReturnAction(){
-
-        loadViewRegister("/GUI/FXML/MainView.fxml");
+        MainViewController mainView = new MainViewController();
+        mainView.loadViewRegister("/GUI/FXML/MainView.fxml");
     }
 
 
