@@ -19,7 +19,7 @@ public class ClienteDaoJDBC implements ClientDao {
             try {
                 st = conn.prepareStatement(
                         "INSERT INTO cliente "
-                                + "(nome, Email,telefone,idade) "
+                                + "(nome, email,telefone,idade) "
                                 + "VALUES "
                                 + "(?, ?, ?, ?)",
                         Statement.RETURN_GENERATED_KEYS);
@@ -27,7 +27,7 @@ public class ClienteDaoJDBC implements ClientDao {
                 st.setString(1, obj.getNome());
                 st.setString(2,obj.getEmail());
                 st.setString(3, obj.getTelefone());
-                st.setInt(4,obj.getIdade());
+                st.setString(4,obj.getIdade());
 
                 int rowsAffected = st.executeUpdate();
 
@@ -65,7 +65,7 @@ public class ClienteDaoJDBC implements ClientDao {
             st.setString(2, obj.getNome());
             st.setString(3,obj.getTelefone());
             st.setString(4, obj.getEmail());
-            st.setInt(5,obj.getIdade());
+            st.setString(5,obj.getIdade());
 
             st.executeUpdate();
         }
@@ -128,7 +128,7 @@ public class ClienteDaoJDBC implements ClientDao {
                 obj.setNome(rs.getString("nome"));
                 obj.setEmail(rs.getString("Email"));
                 obj.setTelefone(rs.getString("telefone"));
-                obj.setIdade(rs.getInt("idade"));
+                obj.setIdade(rs.getString("idade"));
                 list.add(obj);
             }
             return list;

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML.MainViewController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML.MainViewController">
     <content>
         <VBox prefHeight="439.0" prefWidth="614.0">
             <children>
@@ -37,6 +37,11 @@
             <Button fx:id="btExport" mnemonicParsing="false" onAction="#onBtExportAction" text="Exportar">
                <VBox.margin>
                   <Insets left="80.0" top="-25.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onBtImportAction" text="Import">
+               <VBox.margin>
+                  <Insets left="152.0" top="-24.0" />
                </VBox.margin>
             </Button>
             <TableView fx:id="clientTableView" prefHeight="288.0" prefWidth="614.0">

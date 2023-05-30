@@ -27,8 +27,6 @@ public class RegisteClientController implements Initializable {
     private TextField txtIdade;
     @FXML
     private Button btnRegister;
-    @FXML
-    private Button btnReturn;
 
 
     @FXML
@@ -38,7 +36,7 @@ public class RegisteClientController implements Initializable {
             String name = txtName.getText();
             String email = txtEmail.getText();
             String telefone = txtTelefone.getText();
-            Integer idade = Integer.parseInt(txtIdade.getText());
+            String idade = txtIdade.getText();
 
             Client client = new Client();
             client.setNome(name);
@@ -54,14 +52,11 @@ public class RegisteClientController implements Initializable {
 
     }
 
-
-
     @FXML
     public void onBtReturnAction(){
         MainViewController mainView = new MainViewController();
         mainView.loadViewRegister("/GUI/FXML/MainView.fxml");
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}

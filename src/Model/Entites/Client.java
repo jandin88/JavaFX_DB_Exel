@@ -7,7 +7,7 @@ public class Client implements Serializable {
     private String nome;
     private String email;
     private String telefone;
-    private int idade;
+    private String idade;
 
     public int getId() {
         return id;
@@ -41,16 +41,16 @@ public class Client implements Serializable {
         this.telefone = telefone;
     }
 
-    public int getIdade() {
+    public String getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
 
     public Client() {}
-    public Client(int id, String nome, String email, String telefone, int idade) {
+    public Client(int id, String nome, String email, String telefone, String idade) {
         this.id = id;
         this.nome = nome;
         this.email = email;

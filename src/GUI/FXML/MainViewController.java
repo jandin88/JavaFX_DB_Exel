@@ -4,10 +4,10 @@ import GUI.Util.alerts;
 import Model.Dao.ClientDao;
 import Model.Dao.DaoFactory;
 import Model.Entites.Client;
-import Model.Export.Export;
+import Model.Entites.Export;
+import Model.Entites.Import;
 import Model.Service.ClientService;
 import Project.Main;
-import db.DB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -66,6 +66,12 @@ public class MainViewController implements Initializable {
         export.generateExcel(clients, fileNome);
 
     }
+    @FXML
+    public  void onBtImportAction(){
+        Import importEx =new Import();
+        importEx.importExel();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb){initializeNode();}
 
@@ -95,20 +101,24 @@ public class MainViewController implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(MainViewController.class.getResource(AbsoluteName));
             ScrollPane newVbox = loader.load();
+            MainViewController controller = loader.getController();
+
 
             Scene mainScene= Main.getMainScene();
             VBox mainVbox=(VBox) ((ScrollPane)mainScene.getRoot()).getContent();
 
-            newVbox.setFitToHeight(true);
-            newVbox.setFitToWidth(true);
-
 
             mainVbox.getChildren().clear();
-            if (AbsoluteName=="/GUI/FXML/MainView.fxml"){
-                MainViewController controller=loader.getController();
+
+
+            if (AbsoluteName=="/GUI/FXML/MainView.fxml") {
+                controller = loader.getController();
+                newVbox.setFitToHeight(true);
+                newVbox.setFitToWidth(true);
                 controller.setClienteService(new ClientService());
                 controller.updateTableView();
             }
+            controller.updateTableView();
             mainVbox.getChildren().addAll(newVbox);
 
 

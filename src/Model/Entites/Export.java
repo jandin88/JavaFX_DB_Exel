@@ -1,6 +1,5 @@
-package Model.Export;
+package Model.Entites;
 
-import Model.Entites.Client;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
@@ -12,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+
+import static Model.Entites.FileUser.fileUsers;
 
 public class Export {
 
@@ -59,23 +60,7 @@ public class Export {
             e.printStackTrace();
         }
     }
-    public String fileUsers(){
 
-        // Cria um seletor de pasta
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-        // Exibe a janela de diálogo para o usuário selecionar uma pasta
-        int result = fileChooser.showOpenDialog(null);
-        String  selectedFolderPath = "";
-        if (result == JFileChooser.APPROVE_OPTION) {
-            // Obtém a pasta selecionada pelo usuário
-            selectedFolderPath = fileChooser.getSelectedFile().getPath();
-
-        }
-        return selectedFolderPath;
-
-    }
 
 
 }
