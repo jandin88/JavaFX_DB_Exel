@@ -101,8 +101,6 @@ public class MainViewController implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(MainViewController.class.getResource(AbsoluteName));
             ScrollPane newVbox = loader.load();
-            MainViewController controller = loader.getController();
-
 
             Scene mainScene= Main.getMainScene();
             VBox mainVbox=(VBox) ((ScrollPane)mainScene.getRoot()).getContent();
@@ -111,16 +109,16 @@ public class MainViewController implements Initializable {
             mainVbox.getChildren().clear();
 
 
+
             if (AbsoluteName=="/GUI/FXML/MainView.fxml") {
-                controller = loader.getController();
-                newVbox.setFitToHeight(true);
-                newVbox.setFitToWidth(true);
+
+                MainViewController controller=loader.getController();
                 controller.setClienteService(new ClientService());
                 controller.updateTableView();
             }
-            controller.updateTableView();
-            mainVbox.getChildren().addAll(newVbox);
 
+            newVbox.getMinViewportHeight();
+            mainVbox.getChildren().addAll(newVbox.getContent());
 
         }catch (Exception e){
             alerts.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);

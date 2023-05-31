@@ -56,6 +56,8 @@ public class RegisteClientController implements Initializable {
     public void onBtReturnAction(){
         MainViewController mainView = new MainViewController();
         mainView.loadViewRegister("/GUI/FXML/MainView.fxml");
+
+
     }
 
     @Override

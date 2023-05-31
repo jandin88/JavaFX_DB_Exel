@@ -12,9 +12,9 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" fitToWidth="true" fitToHeight="true" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML.RegisteClientController">
    <content>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="685.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-Infinity" prefWidth="Infinity">
          <children>
-            <AnchorPane prefHeight="417.0" prefWidth="623.0">
+            <AnchorPane >
                <children>
                   <TextField fx:id="txtName" layoutX="73.0" layoutY="133.0" />
                   <TextField fx:id="txtEmail" layoutX="403.0" layoutY="133.0" />

@@ -12,7 +12,7 @@
 
 <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML.MainViewController">
     <content>
-        <VBox prefHeight="439.0" prefWidth="614.0">
+        <VBox >
             <children>
                 <MenuBar>
                     <menus>
