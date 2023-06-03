@@ -53,6 +53,7 @@ public class MainViewController implements Initializable {
     @FXML
     public void onBtNewAction(){
         loadViewRegister("/GUI/FXML/registerClient.fxml");
+
     }
 
     @FXML
@@ -110,15 +111,21 @@ public class MainViewController implements Initializable {
 
 
 
+
+
             if (AbsoluteName=="/GUI/FXML/MainView.fxml") {
 
                 MainViewController controller=loader.getController();
                 controller.setClienteService(new ClientService());
                 controller.updateTableView();
+                controller.clientTableView.setPrefHeight(Double.parseDouble("750.0"));
+
+
+
             }
 
-            newVbox.getMinViewportHeight();
             mainVbox.getChildren().addAll(newVbox.getContent());
+
 
         }catch (Exception e){
             alerts.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);
