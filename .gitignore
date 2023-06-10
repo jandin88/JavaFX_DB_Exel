@@ -14,6 +14,10 @@ out/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+root
+
+user=root
+password=sabedoria22
 
 ### NetBeans ###
 /nbproject/private/

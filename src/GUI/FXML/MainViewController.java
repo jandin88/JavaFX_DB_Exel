@@ -106,12 +106,9 @@ public class MainViewController implements Initializable {
             Scene mainScene= Main.getMainScene();
             VBox mainVbox=(VBox) ((ScrollPane)mainScene.getRoot()).getContent();
 
-
             mainVbox.getChildren().clear();
-
-
-
-
+            newVbox.setFitToHeight(true);
+            newVbox.setFitToWidth(true);
 
             if (AbsoluteName=="/GUI/FXML/MainView.fxml") {
 

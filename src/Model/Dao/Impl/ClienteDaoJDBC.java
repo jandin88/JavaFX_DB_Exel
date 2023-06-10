@@ -46,6 +46,7 @@ public class ClienteDaoJDBC implements ClientDao {
             catch (SQLException e) {
                 throw new DbException(e.getMessage());
             }
+
             finally {
                 DB.closeStatement(st);
             }
