@@ -117,8 +117,6 @@ public class MainViewController implements Initializable {
                 controller.updateTableView();
                 controller.clientTableView.setPrefHeight(Double.parseDouble("750.0"));
 
-
-
             }
 
             mainVbox.getChildren().addAll(newVbox.getContent());
